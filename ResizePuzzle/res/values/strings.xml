@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Resize Puzzle</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="open_image">Képválasztás</string>
+    <string name="title_string">Resize Puzzle</string>
+    <string name="title2_string">Azért ennyire nem lesz minimál design :)</string>
+    <string name="congratulations">Gratulálok!</string>
+
+</resources>
