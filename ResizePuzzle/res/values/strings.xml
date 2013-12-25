@@ -8,5 +8,6 @@
     <string name="title_string">Resize Puzzle</string>
     <string name="title2_string">Azért ennyire nem lesz minimál design :)</string>
     <string name="congratulations">Gratulálok!</string>
+    <string name="title_activity_game">GameActivity</string>
 
 </resources>

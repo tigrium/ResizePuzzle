@@ -16,6 +16,7 @@ public interface Table {
 //	public int getFieldWidth(int index);
 //	public int getFieldHeight(int index);
 	public boolean isCorrectOrder();
+	public void setSize(int width, int height, String imgPath);
 	
 	public void mixFields();
 	public void changeFields(int index1, int index2);

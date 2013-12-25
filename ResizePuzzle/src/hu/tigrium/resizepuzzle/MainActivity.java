@@ -34,13 +34,10 @@ private PuzzleView puzzleView;
             if (requestCode == 1) {
             	Uri selectedImageUri = data.getData();           
                 String selectedImagePath = getPath(selectedImageUri);
-                
-                DisplayMetrics displaymetrics = new DisplayMetrics();
-                getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-                puzzleView = new PuzzleView(this, 
-                		BitmapFactory.decodeFile(selectedImagePath),
-                		displaymetrics.widthPixels, displaymetrics.heightPixels);
-        		setContentView(puzzleView);
+
+        		Intent intent = new Intent().setClass(this, GameActivity.class);
+        		intent.putExtra("imgPath", selectedImagePath);
+        		startActivity(intent);
             }
 	    }
 	}

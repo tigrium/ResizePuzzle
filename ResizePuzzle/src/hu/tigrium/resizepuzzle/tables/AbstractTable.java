@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.DisplayMetrics;
 import android.util.Log;
 
 public abstract class AbstractTable implements Table {
@@ -16,12 +18,12 @@ public abstract class AbstractTable implements Table {
 	Field[] fields;
 	private int[] indexes;
 	
-	public AbstractTable(Bitmap image, int width, int height) {
+	public AbstractTable(String imgPath, int width, int height) {
 		super();
-		this.image = image;
 		rnd = new Random(System.currentTimeMillis());
 		
-		this.image = ImageUtils.cropAndResizeImageCenter(image, width, height);
+		image = ImageUtils.cropAndResizeImageCenter(
+				BitmapFactory.decodeFile(imgPath), width, height);
 		initFields();
 		indexes = new int[fields.length];
 		for (int i = 0; i < indexes.length; i++) {
@@ -119,6 +121,13 @@ public abstract class AbstractTable implements Table {
 	void addField(int index, Bitmap image, int top, int left, int width, int height) {
 		fields[index] = new Field(index, top, left, width, height, 
 				ImageUtils.cropImage(image, top, left, width, height));
+
 	}
 	
+	@Override
+	public void setSize(int width, int height, String imgPath) {
+		image = ImageUtils.cropAndResizeImageCenter(
+				BitmapFactory.decodeFile(imgPath), width, height);
+		initFields();
+	}
 }

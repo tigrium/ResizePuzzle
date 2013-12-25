@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -15,19 +16,24 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.widget.Toast;
 
 public class PuzzleView extends View implements OnTouchListener {
+	private Context context;
     private Paint paint = new Paint();
     private Table table;
     private int selected = -1;
     private boolean paintLines = true;
+    private String imgPath;
     
-    public PuzzleView(Context context, Bitmap image, int width, int height) {
+    public PuzzleView(Context context, String imgPath, int width, int height) {
         super(context);
         setOnTouchListener(this);
         
-        table = new Table1(image, width, height);
-//        table.changeFields(0, 4);
+        this.context = context;
+        this.imgPath = imgPath;
+        
+        table = new Table1(imgPath, width, height);
     	table.mixFields();
     }
 
@@ -120,6 +126,10 @@ public class PuzzleView extends View implements OnTouchListener {
 	private boolean change(int i1, int i2) {
 		table.changeFields(i1, i2);
 		return table.isCorrectOrder();
+	}
+	
+	public void setSize(int width, int height) {
+		table.setSize(width, height, imgPath);
 	}
 
 }
